@@ -1,0 +1,56 @@
+# Entities in TypeORM
+
+In TypeORM, tables are created from Entities. An entity is a class that maps to a database table (or collection when using MongoDB). This class includes the table schema and methods for getting/inserting/updating/deleting records.
+
+In this guide, you'll learn how to define entities in TypeORM using TypeScript.
+
+## Defining an Entity
+
+Here's an example of how to define an entity:
+
+```typescript
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+
+@Entity()
+export class User {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  name: string;
+
+  @Column()
+  email: string;
+}
+```
+
+In this example, we define a `User` entity with three columns: `id`, `name`, and `email`. The `id` column is a primary generated column, which means it's a primary key and its value will be auto-generated.
+
+## Using the Entity
+
+Once you have an entity defined, you can use it to perform CRUD operations:
+
+```typescript
+import { getRepository } from "typeorm";
+import { User } from "./entity/User";
+
+const userRepository = getRepository(User);
+
+// Create a new user
+const user = new User();
+user.name = "John Doe";
+user.email = "john@example.com";
+await userRepository.save(user);
+
+// Find a user
+const user = await userRepository.findOne({ email: "john@example.com" });
+
+// Update a user
+user.name = "Jane Doe";
+await userRepository.save(user);
+
+// Delete a user
+await userRepository.remove(user);
+```
+
+That's it for entities in TypeORM! In the next guide, we'll learn how to perform CRUD operations.

@@ -1,0 +1,46 @@
+# CRUD Operations in Sequelize
+
+In this guide, you'll learn how to perform CRUD (Create, Read, Update, Delete) operations using Sequelize and TypeScript.
+
+## Creating Records
+
+You can create a new record and save it to the database using the `create` method:
+
+```typescript
+const user = await User.create({ name: "John Doe", email: "john@example.com" });
+```
+
+## Reading Records
+
+You can read records from the database using the `findAll` and `findOne` methods:
+
+```typescript
+// Find all users
+const users = await User.findAll();
+
+// Find one user by email
+const user = await User.findOne({ where: { email: "john@example.com" } });
+```
+
+## Updating Records
+
+You can update records in the database using the `update` method:
+
+```typescript
+// Update one user by email
+await User.update(
+  { name: "Jane Doe" },
+  { where: { email: "john@example.com" } }
+);
+```
+
+## Deleting Records
+
+You can delete records from the database using the `destroy` method:
+
+```typescript
+// Delete one user by email
+await User.destroy({ where: { email: "john@example.com" } });
+```
+
+That's it for CRUD operations with Sequelize! In the next guide, we'll learn about more advanced topics.

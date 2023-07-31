@@ -3,6 +3,8 @@
   "getting-started": "Getting Started",
   "express": "Express.js",
   "mongodb": "MongoDB",
+  "graphql": "GraphQL",
+  "orm": "ORM",
   "about": {
     "title": "About",
     "type": "page"

@@ -1,0 +1,8 @@
+{
+  "setting-up-sequelize": "Setting up Sequelize",
+  "models-in-sequelize": "Models in Sequelize",
+  "crud-operations-in-sequelize": "CRUD operations in Sequelize",
+  "setting-up-typeorm": "Setting up TypeORM",
+  "entities-in-typeorm": "Entities in TypeORM",
+  "crud-operations-in-typeorm": "CRUD operations in TypeORM"
+}

@@ -1,0 +1,53 @@
+# Models in Sequelize
+
+In Sequelize, a model is the essence of an entity. It represents a table in the database and the actions that can be done on it. Models are defined with the `sequelize.define` method.
+
+In this guide, you'll learn how to define models in Sequelize using TypeScript.
+
+## Defining a Model
+
+Here's an example of how to define a model:
+
+```typescript
+import { Sequelize, DataTypes, Model } from "sequelize";
+
+const sequelize = new Sequelize("database", "username", "password", {
+  host: "localhost",
+  dialect: "postgres",
+});
+
+class User extends Model {}
+
+User.init(
+  {
+    name: DataTypes.STRING,
+    email: DataTypes.STRING,
+  },
+  {
+    sequelize,
+    modelName: "User",
+  }
+);
+```
+
+In this example, we first create a new Sequelize instance. Then, we define a `User` model with two fields: `name` and `email`.
+
+## Using the Model
+
+Once you have a model defined, you can use it to perform CRUD operations:
+
+```typescript
+// Create a new user
+const user = await User.create({ name: "John Doe", email: "john@example.com" });
+
+// Find a user
+const user = await User.findOne({ where: { email: "john@example.com" } });
+
+// Update a user
+await user.update({ name: "Jane Doe" });
+
+// Delete a user
+await user.destroy();
+```
+
+That's it for models in Sequelize! In the next guide, we'll learn how to perform CRUD operations.

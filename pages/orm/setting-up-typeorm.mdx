@@ -1,0 +1,42 @@
+# Setting Up TypeORM
+
+TypeORM is an ORM that can run in NodeJS, Browser, Cordova, PhoneGap, Ionic, React Native, NativeScript, Expo, and Electron platforms and can be used with TypeScript and JavaScript (ES5, ES6, ES7, ES8). It supports both Active Record and Data Mapper patterns, unlike all other JavaScript ORMs currently in existence, which means you can write high quality, loosely coupled, scalable, maintainable applications the most productive way.
+
+In this guide, you'll learn how to set up TypeORM in your development environment.
+
+## Installing TypeORM
+
+You can install TypeORM and the corresponding driver for your database using npm:
+
+```bash
+npm install typeorm pg
+```
+
+This command installs TypeORM and the `pg` package, which is the PostgreSQL driver for Node.js.
+
+## Initializing TypeORM
+
+Once you have TypeORM installed, you can initialize it:
+
+```typescript
+import { createConnection } from "typeorm";
+
+createConnection({
+  type: "postgres",
+  host: "localhost",
+  port: 5432,
+  username: "test",
+  password: "test",
+  database: "test",
+  entities: [__dirname + "/entity/*.js"],
+  synchronize: true,
+})
+  .then((connection) => {
+    // here you can start to work with your entities
+  })
+  .catch((error) => console.log(error));
+```
+
+In this example, we create a new TypeORM connection with the database type, host, port, username, password, and database name. We also specify the entities and set `synchronize` to `true`.
+
+That's it for setting up TypeORM! In the next guide, we'll learn how to define entities.

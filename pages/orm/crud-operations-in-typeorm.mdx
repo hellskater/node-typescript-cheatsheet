@@ -1,0 +1,52 @@
+# CRUD Operations in TypeORM
+
+In this guide, you'll learn how to perform CRUD (Create, Read, Update, Delete) operations using TypeORM and TypeScript.
+
+## Creating Records
+
+You can create a new record and save it to the database using the `save` method:
+
+```typescript
+import { getRepository } from "typeorm";
+import { User } from "./entity/User";
+
+const userRepository = getRepository(User);
+
+const user = new User();
+user.name = "John Doe";
+user.email = "john@example.com";
+await userRepository.save(user);
+```
+
+## Reading Records
+
+You can read records from the database using the `find` and `findOne` methods:
+
+```typescript
+// Find all users
+const users = await userRepository.find();
+
+// Find one user by email
+const user = await userRepository.findOne({ email: "john@example.com" });
+```
+
+## Updating Records
+
+You can update records in the database using the `save` method:
+
+```typescript
+// Update a user
+user.name = "Jane Doe";
+await userRepository.save(user);
+```
+
+## Deleting Records
+
+You can delete records from the database using the `remove` method:
+
+```typescript
+// Delete a user
+await userRepository.remove(user);
+```
+
+That's it for CRUD operations with TypeORM! In the next guide, we'll learn about more advanced topics.

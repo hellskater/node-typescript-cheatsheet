@@ -1,0 +1,32 @@
+# Setting Up Sequelize
+
+Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite, and Microsoft SQL Server. It features solid transaction support, relations, eager and lazy loading, read replication and more.
+
+In this guide, you'll learn how to set up Sequelize in your development environment.
+
+## Installing Sequelize
+
+You can install Sequelize and the corresponding driver for your database using npm:
+
+```bash
+npm install sequelize pg pg-hstore
+```
+
+This command installs Sequelize and the `pg` and `pg-hstore` packages, which are the PostgreSQL driver and the PostgreSQL data types for Node.js, respectively.
+
+## Initializing Sequelize
+
+Once you have Sequelize installed, you can initialize it:
+
+```typescript
+import { Sequelize } from "sequelize";
+
+const sequelize = new Sequelize("database", "username", "password", {
+  host: "localhost",
+  dialect: "postgres",
+});
+```
+
+In this example, we create a new Sequelize instance with the name of the database, the username, and the password. We also specify the host and the dialect.
+
+That's it for setting up Sequelize! In the next guide, we'll learn how to define models.
