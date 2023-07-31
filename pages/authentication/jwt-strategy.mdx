@@ -1,0 +1,47 @@
+# JWT Authentication Strategy
+
+JSON Web Token (JWT) is a compact, URL-safe means of representing claims to be transferred between two parties. The JWT strategy is used for authenticating users using a JWT.
+
+In this guide, you'll learn how to implement the JWT authentication strategy in Passport.js.
+
+## Installing Passport-JWT
+
+You can install the Passport-JWT strategy using npm:
+
+```bash
+npm install passport-jwt jsonwebtoken
+```
+
+## Configuring Passport-JWT
+
+Once you have Passport-JWT installed, you can configure it in your application:
+
+```typescript
+import passport from "passport";
+import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
+
+const opts = {
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  secretOrKey: "secret",
+};
+
+passport.use(
+  new JwtStrategy(opts, function (jwt_payload, done) {
+    User.findOne({ id: jwt_payload.sub }, function (err, user) {
+      if (err) {
+        return done(err, false);
+      }
+      if (user) {
+        return done(null, user);
+      } else {
+        return done(null, false);
+        // or you could create a new account
+      }
+    });
+  })
+);
+```
+
+In this example, we first import Passport and Passport-JWT. Then, we define a new JWT strategy. The strategy requires a `verify` function, which accepts the JWT payload and a `done` callback.
+
+That's it for the JWT authentication strategy! In the next guide, we'll learn how to implement the OAuth authentication strategy.

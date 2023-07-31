@@ -1,0 +1,30 @@
+# Setting Up Passport.js
+
+Passport.js is a popular authentication middleware for Node.js. It's flexible, modular, and can be plugged into any Express-based web application. It provides a comprehensive set of strategies support authentication using a username and password, Facebook, Twitter, and more.
+
+In this guide, you'll learn how to set up Passport.js in your Node.js and TypeScript project.
+
+## Installing Passport.js
+
+You can install Passport.js using npm:
+
+```bash
+npm install passport
+```
+
+## Configuring Passport.js
+
+Once you have Passport.js installed, you can configure it in your application:
+
+```typescript
+import express from "express";
+import passport from "passport";
+
+const app = express();
+
+app.use(passport.initialize());
+```
+
+In this example, we first import Express and Passport. Then, we initialize Passport and use it as a middleware with Express.
+
+That's it for setting up Passport.js! In the next guides, we'll learn how to implement various authentication strategies using Passport.js.

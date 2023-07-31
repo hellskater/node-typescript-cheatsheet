@@ -1,0 +1,6 @@
+{
+  "setting-up-passport": "Setting up Passport",
+  "local-strategy": "Local Strategy",
+  "jwt-strategy": "JWT Strategy",
+  "oauth-strategy": "OAuth Strategy"
+}

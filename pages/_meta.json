@@ -5,6 +5,7 @@
   "mongodb": "MongoDB",
   "graphql": "GraphQL",
   "orm": "ORM",
+  "authentication": "Authentication",
   "about": {
     "title": "About",
     "type": "page"

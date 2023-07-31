@@ -1,0 +1,41 @@
+# OAuth Authentication Strategy
+
+OAuth (Open Authorization) is an open standard for token-based authentication and authorization. The OAuth strategy is used for authenticating users using a third-party account, such as Google or Facebook.
+
+In this guide, you'll learn how to implement the OAuth authentication strategy in Passport.js.
+
+## Installing Passport-OAuth
+
+You can install the Passport-OAuth strategy using npm:
+
+```bash
+npm install passport-oauth
+```
+
+## Configuring Passport-OAuth
+
+Once you have Passport-OAuth installed, you can configure it in your application:
+
+```typescript
+import passport from "passport";
+import { OAuth2Strategy as GoogleStrategy } from "passport-google-oauth";
+
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: GOOGLE_CLIENT_ID,
+      clientSecret: GOOGLE_CLIENT_SECRET,
+      callbackURL: "http://www.example.com/auth/google/callback",
+    },
+    function (accessToken, refreshToken, profile, done) {
+      User.findOrCreate({ googleId: profile.id }, function (err, user) {
+        return done(err, user);
+      });
+    }
+  )
+);
+```
+
+In this example, we first import Passport and Passport-Google-OAuth. Then, we define a new Google OAuth strategy. The strategy requires a `verify` function, which accepts the access token, refresh token, profile, and a `done` callback.
+
+That's it for the OAuth authentication strategy! In the next guide, we'll learn about more advanced topics.
