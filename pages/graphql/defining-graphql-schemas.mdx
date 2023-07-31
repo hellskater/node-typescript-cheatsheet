@@ -1,0 +1,61 @@
+# Defining GraphQL Schemas
+
+A GraphQL schema is at the center of any GraphQL server implementation and describes the functionality available to the clients which connect to it.
+
+In this guide, you'll learn how to define GraphQL schemas using the GraphQL Schema Definition Language (SDL).
+
+## What is the GraphQL SDL?
+
+The GraphQL Schema Definition Language (SDL) is a language-agnostic way to describe a GraphQL schema. The SDL is used in the type definitions that you pass to the `ApolloServer` constructor.
+
+Here's an example of a simple GraphQL schema defined using the SDL:
+
+```graphql
+type Query {
+  hello: String
+}
+```
+
+In this example, the schema consists of a single `Query` type with a single field `hello` of type `String`.
+
+## Defining Types
+
+In addition to the `Query` type, you can define your own types in the GraphQL schema:
+
+```graphql
+type Book {
+  title: String
+  author: String
+}
+
+type Query {
+  books: [Book]
+}
+```
+
+In this example, we define a `Book` type with two fields: `title` and `author`. We also update the `Query` type to include a `books` field that returns an array of `Book` objects.
+
+## Defining Resolvers
+
+Once you have your types defined, you can define resolvers to fetch the data for your types:
+
+```typescript
+const resolvers = {
+  Query: {
+    books: () => [
+      {
+        title: "The Awakening",
+        author: "Kate Chopin",
+      },
+      {
+        title: "City of Glass",
+        author: "Paul Auster",
+      },
+    ],
+  },
+};
+```
+
+In this example, we define a resolver for the `books` field that returns an array of books.
+
+That's it for defining GraphQL schemas! In the next guide, we'll learn how to define resolvers.

@@ -1,0 +1,44 @@
+# Error Handling in GraphQL
+
+Error handling is a crucial part of any application. GraphQL provides several ways to handle errors. In this guide, you'll learn how to handle errors in your GraphQL server.
+
+## Handling Errors in Resolvers
+
+In GraphQL, any error during the execution of a resolver function will result in an `Error` object. Here's an example of how to handle errors in resolvers:
+
+```typescript
+const resolvers = {
+  Query: {
+    books: () => {
+      try {
+        // Fetch the books from the database
+        return books;
+      } catch (err) {
+        throw new Error("Failed to fetch books");
+      }
+    },
+  },
+};
+```
+
+In this example, if an error occurs when trying to fetch the books, the resolver function will throw an `Error` object.
+
+## Returning Errors to the Client
+
+When an error occurs during the execution of a query or mutation, GraphQL will return an `errors` array in the response:
+
+```json
+{
+  "errors": [
+    {
+      "message": "Failed to fetch books",
+      "locations": [{ "line": 2, "column": 3 }],
+      "path": ["books"]
+    }
+  ]
+}
+```
+
+In this example, the `errors` array contains an error object with a `message` property that describes the error, a `locations` property that indicates where in the query the error occurred, and a `path` property that indicates the path of the field that caused the error.
+
+That's it for error handling in GraphQL! In the next guide, we'll learn about more advanced topics.

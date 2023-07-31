@@ -1,0 +1,48 @@
+# Setting Up Apollo Server
+
+Apollo Server is a community-driven, open-source GraphQL server that works with any GraphQL schema. It's the best way to build a production-ready, self-documenting GraphQL API that can use data from any source.
+
+In this guide, you'll learn how to set up Apollo Server in your development environment.
+
+## Installing Apollo Server
+
+You can install Apollo Server using npm:
+
+```bash
+npm install apollo-server graphql
+```
+
+This command installs both Apollo Server and the `graphql` package, which Apollo Server uses to build a GraphQL schema and execute queries.
+
+## Creating an Apollo Server
+
+Once you have Apollo Server installed, you can create a new Apollo Server:
+
+```typescript
+import { ApolloServer, gql } from "apollo-server";
+
+// Define your GraphQL schema
+const typeDefs = gql`
+  type Query {
+    hello: String
+  }
+`;
+
+// Define your resolvers
+const resolvers = {
+  Query: {
+    hello: () => "Hello, world!",
+  },
+};
+
+// Create the Apollo Server
+const server = new ApolloServer({ typeDefs, resolvers });
+
+server.listen().then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`);
+});
+```
+
+In this example, we first define a GraphQL schema with a single query field `hello`. Then, we define a resolver for the `hello` field. Finally, we create a new Apollo Server with the schema and resolvers and start the server.
+
+That's it for setting up Apollo Server! In the next guide, we'll learn how to define GraphQL schemas.

@@ -1,0 +1,40 @@
+# Mutations in GraphQL
+
+In GraphQL, you use mutations to modify server-side data. Mutations can create, update, and delete data. In this guide, you'll learn how to define mutations in Apollo Server.
+
+## What are Mutations?
+
+In GraphQL, mutations are operations that can modify server-side data. Unlike queries, which are read-only and side-effect-free, mutations can create, update, and delete data.
+
+## Defining Mutations
+
+Here's an example of how to define a mutation:
+
+```graphql
+type Mutation {
+  addBook(title: String!, author: String!): Book
+}
+```
+
+In this example, we define a `Mutation` type with a single field `addBook`. The `addBook` mutation accepts two arguments: `title` and `author`, and returns a `Book` object.
+
+## Defining Resolvers for Mutations
+
+Once you have your mutations defined, you can define resolvers for them:
+
+```typescript
+const resolvers = {
+  Mutation: {
+    addBook: (_, { title, author }) => {
+      const book = { title, author };
+      // Add the book to the database
+      books.push(book);
+      return book;
+    },
+  },
+};
+```
+
+In this example, we define a resolver for the `addBook` mutation. The resolver is a function that adds a new book to the database and returns it.
+
+That's it for mutations in GraphQL! In the next guide, we'll learn about error handling.

@@ -1,0 +1,51 @@
+# Resolvers in GraphQL
+
+Resolvers in GraphQL provide the instructions for turning a GraphQL operation into data. They resolve the query to data by defining how the types and fields in the schema are connected to back-end data sources.
+
+In this guide, you'll learn how to define resolvers in Apollo Server.
+
+## What are Resolvers?
+
+Resolvers are functions that handle the execution of the queries and mutations in a GraphQL schema. They fetch the data for each field in the schema and return it to the client.
+
+## Defining Resolvers
+
+Here's an example of how to define resolvers:
+
+```typescript
+const resolvers = {
+  Query: {
+    books: () => [
+      {
+        title: "The Awakening",
+        author: "Kate Chopin",
+      },
+      {
+        title: "City of Glass",
+        author: "Paul Auster",
+      },
+    ],
+  },
+};
+```
+
+In this example, we define a resolver for the `books` field in the `Query` type. The resolver is a function that returns an array of books.
+
+## Resolver Arguments
+
+Resolvers can accept arguments. Here's an example of a resolver that accepts an argument:
+
+```typescript
+const resolvers = {
+  Query: {
+    book: (_, { title }) => {
+      // Fetch the book with the given title
+      return books.find((book) => book.title === title);
+    },
+  },
+};
+```
+
+In this example, the `book` resolver accepts a `title` argument and returns the book with the given title.
+
+That's it for resolvers in GraphQL! In the next guide, we'll learn how to define mutations.
