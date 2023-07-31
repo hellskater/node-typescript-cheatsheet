@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shuding/node-typescript-cheatsheet.git"
+    "url": "git+https://github.com/hellskater/node-typescript-cheatsheet.git"
   },
   "author": "K Srinivas Rao <ksrinivasrao531@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shuding/node-typescript-cheatsheet/issues"
+    "url": "https://github.com/hellskater/node-typescript-cheatsheet/issues"
   },
-  "homepage": "https://github.com/shuding/node-typescript-cheatsheet#readme",
+  "homepage": "https://github.com/hellskater/node-typescript-cheatsheet#readme",
   "dependencies": {
     "next": "^13.0.6",
     "nextra": "latest",
