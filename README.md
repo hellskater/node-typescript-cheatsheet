@@ -2,6 +2,16 @@
 
 This repository is a comprehensive guide for using TypeScript with Node.js. It covers a wide range of topics including setting up a Node.js project with TypeScript, working with popular Node.js libraries and tools like Express.js, MongoDB, GraphQL, various ORMs, and much more.
 
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/hellskater/node-typescript-cheatsheet?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/hellskater/node-typescript-cheatsheet?style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/github/stars/hellskater/node-typescript-cheatsheet?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/hellskater/node-typescript-cheatsheet?style=for-the-badge)
+![Website](https://img.shields.io/website?down_color=red&down_message=offline&style=for-the-badge&up_color=green&up_message=online&url=https://node-typescript-cheatsheet.vercel.app/)
+
+## Live
+
+[https://node-typescript-cheatsheet.vercel.app/](https://node-typescript-cheatsheet.vercel.app/)
+
 ## Run Locally
 
 Clone the project

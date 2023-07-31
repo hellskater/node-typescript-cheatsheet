@@ -26,7 +26,7 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase:
     "https://github.com/hellskater/node-typescript-cheatsheet/blob/master",
-  primaryHue: 29,
+  primaryHue: 100,
   useNextSeoProps() {
     return {
       defaultTitle: "Node.js TypeScript Cheatsheet",
