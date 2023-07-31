@@ -1,0 +1,47 @@
+# Error Handling in Mongoose
+
+Error handling is a crucial part of any application. Mongoose provides several ways to handle errors. In this guide, you'll learn how to handle errors when working with Mongoose and TypeScript.
+
+## Handling Validation Errors
+
+Mongoose provides built-in validation for schemas. If a validation error occurs, Mongoose will return a `ValidationError` object.
+
+Here's an example of how to handle validation errors:
+
+```typescript
+const user = new User({ email: "john@example.com", password: "secret" }); // Missing name field
+user.save().catch((err) => {
+  if (err.name === "ValidationError") {
+    for (let field in err.errors) {
+      console.error(err.errors[field].message);
+    }
+  } else {
+    console.error("Failed to save user", err);
+  }
+});
+```
+
+In this example, if a validation error occurs when trying to save a user, Mongoose will return a `ValidationError` object. The `ValidationError` object has an `errors` property that is an object containing all the validation errors that occurred.
+
+## Handling Connection Errors
+
+When connecting to MongoDB, Mongoose will emit a `connected` event when successfully connected and an `error` event if an error occurred:
+
+```typescript
+mongoose.connect("mongodb://localhost:27017/myapp", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+mongoose.connection.on("connected", () => {
+  console.log("Connected to MongoDB");
+});
+
+mongoose.connection.on("error", (err) => {
+  console.error("Failed to connect to MongoDB", err);
+});
+```
+
+In this example, if an error occurs when trying to connect to MongoDB, Mongoose will emit an `error` event.
+
+That's it for error handling in Mongoose! In the next guide, we'll learn about more advanced topics.

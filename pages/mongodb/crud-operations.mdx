@@ -1,0 +1,59 @@
+# CRUD Operations with Mongoose
+
+In this guide, you'll learn how to perform CRUD (Create, Read, Update, Delete) operations using Mongoose and TypeScript.
+
+## Creating Documents
+
+You can create a new document and save it to the database using the `save` method:
+
+```typescript
+const user = new User({
+  name: "John Doe",
+  email: "john@example.com",
+  password: "secret",
+});
+user
+  .save()
+  .then(() => console.log("User saved"))
+  .catch((err) => console.error("Failed to save user", err));
+```
+
+## Reading Documents
+
+You can read documents from the database using the `find` and `findOne` methods:
+
+```typescript
+// Find all users
+User.find()
+  .then((users) => console.log(users))
+  .catch((err) => console.error("Failed to find users", err));
+
+// Find one user by email
+User.findOne({ email: "john@example.com" })
+  .then((user) => console.log(user))
+  .catch((err) => console.error("Failed to find user", err));
+```
+
+## Updating Documents
+
+You can update documents in the database using the `updateOne`, `updateMany`, and `findOneAndUpdate` methods:
+
+```typescript
+// Update one user by email
+User.updateOne({ email: "john@example.com" }, { name: "Jane Doe" })
+  .then(() => console.log("User updated"))
+  .catch((err) => console.error("Failed to update user", err));
+```
+
+## Deleting Documents
+
+You can delete documents from the database using the `deleteOne`, `deleteMany`, and `findOneAndDelete` methods:
+
+```typescript
+// Delete one user by email
+User.deleteOne({ email: "john@example.com" })
+  .then(() => console.log("User deleted"))
+  .catch((err) => console.error("Failed to delete user", err));
+```
+
+That's it for CRUD operations with Mongoose! In the next guide, we'll learn about error handling.

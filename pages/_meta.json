@@ -2,6 +2,7 @@
   "index": "Introduction",
   "getting-started": "Getting Started",
   "express": "Express.js",
+  "mongodb": "MongoDB",
   "about": {
     "title": "About",
     "type": "page"

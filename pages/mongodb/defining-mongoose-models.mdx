@@ -1,0 +1,51 @@
+# Defining Mongoose Models
+
+In Mongoose, everything starts with a Schema. Each schema maps to a MongoDB collection and defines the shape of the documents within that collection. Once you have a schema, you can compile it into a Model. A model is a class with which we construct documents.
+
+## Defining a Schema
+
+Here's an example of how to define a schema:
+
+```typescript
+import mongoose, { Schema, Document } from "mongoose";
+
+interface IUser extends Document {
+  name: string;
+  email: string;
+  password: string;
+}
+
+const UserSchema: Schema = new Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+});
+```
+
+In this example, we first define an interface `IUser` that extends the `Document` interface from Mongoose. This interface will represent a user document. Then, we define a `UserSchema` that describes the structure of a user document.
+
+## Compiling a Model
+
+Once you have a schema, you can compile it into a model:
+
+```typescript
+const User = mongoose.model<IUser>("User", UserSchema);
+```
+
+In this example, `mongoose.model()` is used to compile the `UserSchema` into a `User` model. The first argument to `mongoose.model()` is the name of the collection your model is for. Mongoose automatically looks for the plural, lowercased version of your model name.
+
+Now, you can create new users using the `User` model:
+
+```typescript
+const user = new User({
+  name: "John Doe",
+  email: "john@example.com",
+  password: "secret",
+});
+user
+  .save()
+  .then(() => console.log("User saved"))
+  .catch((err) => console.error("Failed to save user", err));
+```
+
+That's it for defining Mongoose models! In the next guide, we'll learn how to perform CRUD operations.
