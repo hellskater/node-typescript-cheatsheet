@@ -1,0 +1,56 @@
+# Error Handling in Express.js with TypeScript
+
+Error handling is a crucial part of any application. Express.js provides a built-in mechanism for error handling. In this guide, you'll learn how to handle errors in an Express.js application using TypeScript.
+
+## Catching Errors
+
+In Express.js, you can catch errors by passing them to the `next` function in your middleware or route handlers. Here's an example:
+
+```typescript
+import express, { Request, Response, NextFunction } from "express";
+
+const app = express();
+
+app.get("/", (req: Request, res: Response, next: NextFunction) => {
+  try {
+    // Some code that might throw an error
+    throw new Error("Something went wrong!");
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
+});
+```
+
+In this example, if an error is thrown in the route handler for the root URL (`/`), it is caught and passed to the `next` function.
+
+## Handling Errors
+
+Once an error has been caught and passed to the `next` function, it can be handled by an error handling middleware function. Error handling middleware functions are similar to regular middleware functions, but they have four arguments instead of three: `(err, req, res, next)`.
+
+Here's an example of an error handling middleware function:
+
+```typescript
+const errorHandlerMiddleware = (
+  err: Error,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+};
+
+app.use(errorHandlerMiddleware);
+```
+
+In this example, `errorHandlerMiddleware` is an error handling middleware function that logs the error stack trace and sends a 500 response.
+
+That's it for error handling in Express.js with TypeScript! In the next guide, we'll learn about more advanced topics.
+
+```
+
+```

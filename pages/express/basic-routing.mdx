@@ -1,0 +1,57 @@
+# Basic Routing with Express.js and TypeScript
+
+Routing refers to how an application's endpoints (URIs) respond to client requests. In this guide, you'll learn how to define routes in an Express.js application using TypeScript.
+
+## Defining Routes
+
+In Express.js, you can define routes using methods of the `express.Application` object that correspond to HTTP methods. For example, you can use the `app.get()` method to define a route for GET requests.
+
+Here's an example of a simple route definition:
+
+```typescript
+import express, { Request, Response } from "express";
+
+const app = express();
+
+app.get("/", (req: Request, res: Response) => {
+  res.send("Hello, world!");
+});
+
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
+});
+```
+
+In this example, the `app.get()` method is used to define a route for the root URL (`/`). The second argument to `app.get()` is a callback function that is called when a GET request is made to the root URL. This function takes two arguments: a `Request` object and a `Response` object. We explicitly declare the types of `req` and `res` as `Request` and `Response` respectively.
+
+## Route Parameters
+
+You can define routes with route parameters. Route parameters are named URL segments that are used to capture the values specified at their position in the URL. The captured values are populated in the `req.params` object.
+
+Here's an example:
+
+```typescript
+app.get("/users/:userId", (req: Request, res: Response) => {
+  const userId = req.params.userId as string;
+  res.send(`User ID: ${userId}`);
+});
+```
+
+In this example, `:userId` is a route parameter. If you make a GET request to `/users/123`, the `req.params` object will be `{ userId: '123' }`. We cast `req.params.userId` to a string to ensure TypeScript understands the type.
+
+## Query Parameters
+
+You can also access query parameters in the `req.query` object. Query parameters are included in the URL after the `?` character.
+
+Here's an example:
+
+```typescript
+app.get("/search", (req: Request, res: Response) => {
+  const searchTerm = req.query.term as string;
+  res.send(`Search term: ${searchTerm}`);
+});
+```
+
+In this example, if you make a GET request to `/search?term=Node.js`, the `req.query` object will be `{ term: 'Node.js' }`. We cast `req.query.term` to a string to ensure TypeScript understands the type.
+
+That's it for basic routing in Express.js with TypeScript! In the next guide, we'll learn about middleware.

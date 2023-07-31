@@ -1,0 +1,55 @@
+# Understanding tsconfig.json
+
+The `tsconfig.json` file in a TypeScript project is used to specify the compiler options. This file is crucial for managing the behavior of the TypeScript compiler. In this guide, we will explain some of the most commonly used options in the `tsconfig.json` file.
+
+## Basic Options
+
+- `target`: This option specifies the ECMAScript target version. The value can be an ECMAScript version like `ES5`, `ES6`/`ES2015`, `ES2016`, `ES2017`, `ES2018`, `ES2019`, `ES2020`, `ES2021`, or `ESNext`.
+
+- `module`: This option specifies the module system to be used. The value can be `None`, `CommonJS`, `AMD`, `System`, `UMD`, `ES6`/`ES2015`, `ES2020`, `ESNext`, or `Node12`.
+
+- `lib`: This option is used to specify the library files to be included in the compilation. The value can be an array of library names.
+
+- `outDir`: This option specifies the output directory for the compiled JavaScript files.
+
+- `rootDir`: This option specifies the root directory of your source files. Use this if your source files are arranged in a directory structure that you want to preserve in the output directory.
+
+- `strict`: This option enables all strict type-checking options.
+
+- `esModuleInterop`: This option enables interoperability between CommonJS and ES Modules.
+
+## Strict Type-Checking Options
+
+- `noImplicitAny`: This option raises an error when the type of an expression cannot be determined.
+
+- `strictNullChecks`: This option makes sure that `null` and `undefined` cannot be assigned to a variable unless explicitly declared in the type.
+
+- `strictFunctionTypes`: This option ensures function types are strictly checked.
+
+- `strictBindCallApply`: This option makes sure that the `bind`, `call`, and `apply` methods on functions are strictly checked.
+
+## Additional Checks
+
+- `noUnusedLocals`: This option raises an error when a local variable is declared but never used.
+
+- `noUnusedParameters`: This option raises an error when a function parameter is declared but never used.
+
+- `noImplicitReturns`: This option raises an error when not all code paths in a function return a value.
+
+- `noFallthroughCasesInSwitch`: This option raises an error for switch statements that do not include a `break` or `return` in each case.
+
+## Module Resolution Options
+
+- `moduleResolution`: This option determines how modules are resolved. The value can be `node` (Node.js-style resolution) or `classic` (TypeScript's original resolution strategy).
+
+- `baseUrl`: This option specifies the base directory to resolve non-relative module names.
+
+- `paths`: This option allows you to set up a series of path mapping entries which are key-value pairs where the key is the alias and the value is an array with the paths.
+
+- `rootDirs`: This option allows you to set a list of root folders whose combined content represent the structure of the project at runtime.
+
+- `typeRoots`: This option allows you to specify a list of folders that contain type definitions.
+
+- `types`: This option allows you to specify the type definition files to be included.
+
+Remember, these are just a few of the many options available in the `tsconfig.json` file. You can find a complete list of options in the [official TypeScript documentation](https://www.typescriptlang.org/tsconfig).

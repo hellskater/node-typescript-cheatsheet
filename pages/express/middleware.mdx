@@ -1,0 +1,56 @@
+# Middleware in Express.js with TypeScript
+
+Middleware functions are functions that have access to the request object (`req`), the response object (`res`), and the next function in the application’s request-response cycle. The next function is a function in the Express router which, when invoked, executes the middleware succeeding the current middleware.
+
+In this guide, you'll learn how to use middleware in an Express.js application using TypeScript.
+
+## Defining Middleware
+
+Here's an example of a simple middleware function that logs the request method and URL:
+
+```typescript
+import express, { Request, Response, NextFunction } from "express";
+
+const app = express();
+
+const loggerMiddleware = (req: Request, res: Response, next: NextFunction) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+};
+
+app.use(loggerMiddleware);
+
+app.get("/", (req: Request, res: Response) => {
+  res.send("Hello, world!");
+});
+
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
+});
+```
+
+In this example, `loggerMiddleware` is a middleware function that logs the request method and URL. The `next` function is called to pass control to the next middleware function. If `next` is not called, the request will be left hanging.
+
+## Error Handling Middleware
+
+In addition to regular middleware functions, Express.js also supports error handling middleware functions. Error handling middleware functions are similar to regular middleware functions, but they have four arguments instead of three: `(err, req, res, next)`.
+
+Here's an example of an error handling middleware function:
+
+```typescript
+const errorHandlerMiddleware = (
+  err: Error,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+};
+
+app.use(errorHandlerMiddleware);
+```
+
+In this example, `errorHandlerMiddleware` is an error handling middleware function that logs the error stack trace and sends a 500 response.
+
+That's it for middleware in Express.js with TypeScript! In the next guide, we'll learn about error handling.
